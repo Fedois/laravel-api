@@ -17,6 +17,19 @@ class Project extends Model
         'type_id'
     ];
 
+    protected $appends = ['img_path'];
+    protected $hidden = ['img'];
+
+    public function getImgPathAttribute(){
+        $path = null;
+
+        if($this->img){
+            $path = asset('storage/'. $this->img);
+        }
+
+        return $path;
+    }
+
     public function type(){
         return $this->belongsTo(Type::class);
     }
