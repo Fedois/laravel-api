@@ -23,7 +23,7 @@ class ProjectController extends Controller
             'success' => true,
             'code' => 200,
             'message' => 'ok',
-            'data' => $projects
+            'projects' => $projects
         ]);
     }
 
