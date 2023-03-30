@@ -40,12 +40,19 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($slug)
     {
-        //
+        $project = Project::where('slug', $slug)->with('type', 'technologies')->first();
+
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'message' => 'ok',
+            'project' => $project
+        ]);
     }
 
     /**
