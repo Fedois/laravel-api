@@ -43,9 +43,22 @@ class ProjectController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function store($slug)
+    public function store($response)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug)
     {
         $project = Project::where('slug', $slug)->with('type', 'technologies')->first();
+
+        return $project;
 
         return response()->json([
             'success' => true,
@@ -53,17 +66,6 @@ class ProjectController extends Controller
             'message' => 'ok',
             'project' => $project
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
